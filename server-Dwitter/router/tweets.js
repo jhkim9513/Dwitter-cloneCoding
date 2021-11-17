@@ -9,7 +9,7 @@ let tweets = [
         createdAt: Date.now().toString(),
         name: 'Bob',
         username: 'bob',
-        url: 'https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png',
+        url: '',
     },
     {
         id: '2',
@@ -17,7 +17,7 @@ let tweets = [
         createdAt: Date.now().toString(),
         name: 'Kim',
         username: 'kim',
-        url: 'https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png',
+        url: '',
     }
 ];
 const router = express.Router();
@@ -71,7 +71,5 @@ router.delete('/:id', (req, res, next) => {
     tweets = tweets.filter(tweet => tweet.id !== id);
     res.sendStatus(204);
 })
-
-//12.8  12:05
 
 export default router;
