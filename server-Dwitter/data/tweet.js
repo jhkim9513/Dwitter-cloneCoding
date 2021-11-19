@@ -22,7 +22,7 @@ export async function getAll() {
 }
 
 export async function getAllByUsername(username) {
-    return tweets.filter((tweet) => tweet.username);
+    return tweets.filter((tweet) => tweet.username === username);
 }
 
 
