@@ -3,5 +3,7 @@
         "titleBar.activeBackground": "#ff4d64",
         "titleBar.inactiveBackground": "#ff4d64"
     },
-    "explorer.compactFolders": false
+    "explorer.compactFolders": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
 }
