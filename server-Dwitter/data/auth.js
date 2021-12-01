@@ -1,24 +1,28 @@
-import { getUsers } from "../database/database.js";
-import MongoDb from "mongodb";
+import { useVirtualId } from "../database/database.js";
+import Mongoose from "mongoose";
 
-const ObjectId = MongoDb.ObjectId;
+const userSchema = new Mongoose.Schema({
+  username: { type: String, required: true },
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+  url: String,
+});
+
+useVirtualId(userSchema);
+// Model 생성
+const User = Mongoose.model("User", userSchema);
 
 export async function findByUsername(username) {
-  return getUsers() //
-    .findOne({ username }) //
-    .then(mapOptionalUser);
+  return User.findOne({ username });
 }
 
 export async function findById(id) {
-  return getUsers()
-    .findOne({ _id: new ObjectId(id) }) // MongoDB Atlas에서서는  id가 _id로 입력되며 ObjectId('~~') 형태로 저장되기 때문
-    .then(mapOptionalUser);
+  return User.findById(id);
 }
 
 export async function createUser(user) {
-  return getUsers()
-    .insertOne(user)
-    .then((data) => data.insertedId.toString());
+  return new User(user).save().then((data) => data.id);
 }
 
 function mapOptionalUser(user) {
