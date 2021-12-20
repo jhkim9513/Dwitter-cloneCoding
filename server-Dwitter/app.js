@@ -13,7 +13,7 @@ import { connectDB } from "./database/database.js";
 const app = express();
 
 const corsOption = {
-  origin: "*",
+  origin: config.cors.allowedOrigin,
   optionsSuccessStatus: 200,
   credentials: true, // allow the Access-Control-Allow-Credentials
 };
